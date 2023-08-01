@@ -188,7 +188,8 @@ async fn handler(
                     restart: true,
                     system_prompt: Some(system),
                 };
-                let question = "Review the following source code and look for potential problems. The code might be truncated. So, do NOT comment on the completeness of the source code.\n\n".to_string() + t_file_as_text;
+                // let question = "Review the following source code and look for potential problems. The code might be truncated. So, do NOT comment on the completeness of the source code.\n\n".to_string() + t_file_as_text;
+                let question: String = "Analyze the source code given and identify any potential security vulnerabilities.\n\n".to_string() + t_file_as_text;
                 match openai.chat_completion(&chat_id, &question, &co).await {
                     Ok(r) => {
                         resp.push_str(&r.choice);
